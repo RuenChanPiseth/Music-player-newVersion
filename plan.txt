@@ -1,0 +1,11 @@
+This project using some method of JavScript and Json
+All of method in this project
++ Can see number of song, title, duration, click to play and detail of each song
+-start play song 
+-push
+-play part of song
+-next and prevous of song
+-can input other song to Music player
+-update current time and duration of song
+
+

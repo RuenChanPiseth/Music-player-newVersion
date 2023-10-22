@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Music player</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!--  -->
+      <div class="show-more-song">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+      <header class="header">
+        <div class="music-list-container">
+          <!-- <article>
+            <p>Song name</p>
+            <p>2:05</p>
+            <button><i class="fa-solid fa-circle-info"></i></button>
+          </article> -->
+        </div>
+        <input
+          type="file"
+          accept=".mp3, .wav, .flac, .aac, .ogg, .m4a, .wma, .aif, .midi, .mid, .ape"
+          multiple
+        />
+        <button class="add-song">Add song</button>
+      </header>
+      <!--  -->
+      <main>
+        <article class="music-player-container">
+          <div class="img-wrapper">
+            <img src="/img/7841176.jpg" alt="" />
+          </div>
+          <h1 class="song-title">Song title</h1>
+          <div class="range-container">
+            <p>00:00</p>
+            <input type="range" value="0" />
+            <p>00:00</p>
+          </div>
+          <div class="next-prev">
+            <i class="fa-solid fa-backward-step"></i>
+            <i class="fa-solid fa-pause hide"></i>
+            <i class="fa-solid fa-play"></i>
+            <i class="fa-solid fa-forward-step"></i>
+          </div>
+          <!-- <div class="more-function">
+            <i class="fa-solid fa-arrow-rotate-right active"></i>
+            <i class="fa-solid fa-arrows-rotate">1</i>
+            <i class="fa-solid fa-arrow-right-long"></i>
+          </div> -->
+        </article>
+      </main>
+    </div>
+    <!--  -->
+    <audio src=""></audio>
+
+    <script src="/script.js"></script>
+  </body>
+</html>
