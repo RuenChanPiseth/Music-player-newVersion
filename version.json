@@ -1,0 +1,5 @@
+{
+  "version": "1.0.0",
+  "function": "play music, Add muisc",
+  "extension": ".mp3, .wav, .flac, .aac, .ogg, .m4a, .wma, .aif, .midi, .mid, .ape,.mp4, .avi, .mkv, .mov, .wmv, .flv, .webm, .3gp, .ts, .rm, .m4v, .m2ts, .divx, .mpg, .mpeg, .asf, .movie, .rmvb"
+}
