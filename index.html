@@ -18,7 +18,9 @@
         <div class="bar"></div>
         <div class="bar"></div>
       </div>
+
       <header class="header">
+        <button class="function-button">Function</button>
         <div class="music-list-container">
           <!-- <article>
             <p>Song name</p>
@@ -59,9 +61,43 @@
         </article>
       </main>
     </div>
+    <div class="function-display hide">
+      <button class="option-button" id="sortButton">Sort</button>
+      <button class="option-button">Interface</button>
+      <button class="option-button">Option</button>
+      <button class="option-button">More option</button>
+    </div>
     <!--  -->
-    <audio src=""></audio>
+    <div class="interface hide">
+      <button>Background Color</button>
+      <button>Background Image</button>
+      <button>Music List Background</button>
+      <button>Music Display Background</button>
+      <button>Dark Mode</button>
+    </div>
+    <div class="background-color hide">
+      <button class="xmark" id="xmark">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <input type="color" id="input-color" />
+    </div>
+    <!--  -->
+    <div class="hide background-img">
+      <button class="background-img-button">Source</button>
+      <button class="background-img-button">Linear Gradien</button>
+      <input
+        type="file"
+        class="hide"
+        accept=".jpeg, .png, .gif, .bmp, .tiff, .svg, .webp, .icon, .heif, .jp2, .psd, .ai, .eps, .raw, .xcf, .wmf, .pcx, .tga"
+      />
+    </div>
+    <div class="linear-gradien hide">
+      <input type="color" />
+      <input type="color" />
+      <button><i class="fa-solid fa-xmark"></i></button>
+    </div>
 
+    <audio src=""></audio>
     <script src="/script.js" type="module"></script>
   </body>
 </html>

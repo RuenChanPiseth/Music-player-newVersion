@@ -5,6 +5,7 @@
 }
 body {
   height: 100vh;
+  overflow: hidden;
 }
 html {
   font-size: 10px;
@@ -12,12 +13,14 @@ html {
 img {
   width: 250px;
 }
-div.container {
+.container {
+  overflow: hidden;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   background: linear-gradient(to right, blue, orange);
+  background-size: cover;
 }
 
 header {
@@ -207,6 +210,125 @@ button.add-song:hover {
   background-color: rgb(231, 231, 231);
 }
 /*  */
+
+button.function-button {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+.function-display {
+  top: 39px;
+  left: 145px;
+  position: absolute;
+  width: max-content;
+  /* background-color: rgb(75, 75, 76); */
+  border: 1px solid black;
+  z-index: 20;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+button.option-button {
+  display: block;
+  padding: 1rem 1.5rem;
+  width: 100%;
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid black;
+  /* color: white; */
+}
+button.option-button:hover {
+  background-color: lightgray;
+}
+div.interface {
+  position: absolute;
+  background-color: blue;
+  top: 40px;
+  left: 50px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+}
+div.interface > button {
+  padding: 1rem 0;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid black;
+}
+div.interface > button:last-child {
+  border-bottom: none;
+}
+div.interface > button:hover {
+  background-color: #939393;
+}
+.background-color {
+  position: absolute;
+  border-radius: 5px;
+  width: 150px;
+  height: 100px;
+  top: 40px;
+  left: 40px;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid black;
+  padding: 1.5rem;
+  > button {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    transform: translate(390%, -120%);
+    cursor: pointer;
+    border-radius: 50%;
+  }
+  > input:not(.hide) {
+    width: 100%;
+    height: 100%;
+  }
+}
+.background-img {
+  position: absolute;
+  top: 40px;
+  left: 100px;
+  display: flex;
+  flex-direction: column;
+  > button {
+    cursor: pointer;
+    padding: 1rem;
+  }
+}
+.linear-gradien {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  padding: 1rem;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: white;
+  > input {
+    width: 100px;
+    height: 80px;
+  }
+  > button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    transform: translate(80%, -290%);
+  }
+}
+/* media query */
+@media screen and (max-width: 450px) {
+  .show-more-song {
+    width: 50px;
+    height: 40px;
+  }
+  div.bar {
+    margin: 3px 0;
+  }
+}
 .hide {
   display: none;
 }
@@ -215,4 +337,7 @@ audio {
 }
 .active {
   background-color: lightgray;
+}
+div.hide {
+  display: none;
 }

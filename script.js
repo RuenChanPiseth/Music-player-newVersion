@@ -1,53 +1,29 @@
-const showSongButton = document.querySelector(".show-more-song");
-const header = document.querySelector("header");
+// import
+import {
+  range,
+  audio,
+  playAgain,
+  allDuration,
+  header,
+  showSongButton,
+} from "./function.js";
+import { arraySong } from "./function.js";
+import { pushTheSong } from "./function.js";
+import { allFuncButton, updateTIme, reset } from "./function.js";
+// end
+// ​declearation
 const musicListContainer = document.querySelector(".music-list-container");
-const range = document.querySelector("input[type='range']");
-const allDuration = document.querySelectorAll(".range-container>p");
-const allFuncButton = document.querySelectorAll(".next-prev>i");
 const file = document.querySelector("input[type='file']");
 const img = document.querySelector("img");
 let counter = 0;
-const audio = document.querySelector("audio");
+const sortButton = document.getElementById("sortButton");
 const songTitle = document.querySelector(".song-title");
 const moreFunction = document.querySelectorAll(".more-function>i");
-let playAgain = 0;
 const inputFile = document.querySelector("input[type='file']");
 const addSongButton = document.querySelector("button.add-song");
-const arraySong = [
-  {
-    title: "Ghost - Mary On A Cross",
-    musicSrc: "/audio/Ghost - Mary On A Cross (1).mp3",
-    imgSrc: "/img/download.jpeg",
-  },
-  {
-    title: "Lil Nas X - Old Town Road ",
-    musicSrc:
-      "/audio/Lil Nas X - Old Town Road (Official Video) ft. Billy Ray Cyrus (1).mp3",
-    imgSrc: "/img/Old-Town-Road-Video-GQ-2019-051719.webp",
-  },
-  {
-    title: " 7 Years ",
-    musicSrc: "/audio/Lukas Graham - 7 Years [Official Music Video].mp3",
-    imgSrc: "/img/hqdefault.jpg",
-  },
-  {
-    title: "Fire On Fire",
-    musicSrc: "/audio/Sam Smith - Fire On Fire (From 'Watership Down').mp3",
-    imgSrc: "/img/44e46-sam-smith-fire-on-fire-review.jpg",
-  },
-  {
-    title: "Until I Found You",
-    musicSrc:
-      "/audio/Stephen Sanchez, Em Beihold - Until I Found You (Lyrics).mp3",
-    imgSrc: "/img/df55dd551fbc956ba1b22856ab655b7e.1000x1000x1.jpg",
-  },
-  {
-    title: "videoplayback.mp3",
-    musicSrc: "/audio/videoplayback.mp3",
-    imgSrc: "/img/maxresdefault.jpg",
-  },
-];
+
 let musicListContainerChildren = [];
+//  end of declearation
 
 addSongButton.onclick = () => {
   inputFile.click();
@@ -75,6 +51,18 @@ function songVariable() {
   musicListContainerChildren = document.querySelectorAll(
     ".music-list-container>article"
   );
+}
+
+function sortItem(item) {
+  item.sort((a, b) => {
+    if (a.title.toLowerCase() > b.title.toLowerCase()) {
+      return 1;
+    }
+    if (a.title.toLowerCase() < b.title.toLowerCase()) {
+      return -1;
+    }
+    return 0;
+  });
 }
 
 const addSong = () => {
@@ -108,11 +96,6 @@ function playMusic(counter) {
   allFuncButton[1].classList.remove("hide");
 }
 
-function pushTheSong() {
-  audio.pause();
-  allFuncButton[2].classList.remove("hide");
-  allFuncButton[1].classList.add("hide");
-}
 function nextSong() {
   reset();
   counter++;
@@ -143,35 +126,12 @@ function updateRange() {
     }, 1000);
   });
 }
-function updateTIme() {
-  let currentMin;
-  let currentSec;
-  let maxMin;
-  let maxSec;
 
-  currentMin = Math.floor(audio.currentTime / 60)
-    .toString()
-    .padStart(2, "0");
-  currentSec = Math.floor(audio.currentTime % 60)
-    .toString()
-    .padStart(2, "0");
-  allDuration[0].textContent = `${currentMin}:${currentSec}`;
-
-  maxMin = Math.floor(audio.duration / 60)
-    .toString()
-    .padStart(2, "0");
-  maxSec = Math.floor(audio.duration % 60)
-    .toString()
-    .padStart(2, "0");
-  allDuration[1].textContent = `${maxMin}:${maxSec}`;
-}
 function currentPlay() {
   audio.currentTime = range.value;
   playMusic(counter);
 }
-function reset() {
-  range.value = 0;
-}
+
 function playCurrentTime() {
   playMusic(counter);
 }
@@ -201,8 +161,22 @@ function activeSong(index) {
   musicListContainerChildren[index].classList.add("active");
 }
 
+sortButton.addEventListener("click", () => {
+  sortItem(arraySong);
+  showSongToList();
+});
 allFuncButton[0].addEventListener("click", prevSong);
 allFuncButton[3].addEventListener("click", nextSong);
 allFuncButton[1].addEventListener("click", pushTheSong);
 allFuncButton[2].addEventListener("click", currentPlay);
 range.addEventListener("input", playCurrentTime);
+
+window.addEventListener("keypress", (e) => {
+  if (e.keyCode == 32) {
+    if (audio.paused) {
+      playCurrentTime();
+    } else {
+      pushTheSong();
+    }
+  }
+});
